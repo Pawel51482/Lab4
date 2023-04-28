@@ -2,7 +2,6 @@
 
 if [[ "$1" == "--date" ]]; then
     echo "Dzisiejsza data to: $(date +%Y-%m-%d)"
-
 elif [[ "$1" == "--logs" && "$2" =~ ^[0-9]+$ ]]; then
     for i in $(seq 1 $2); do
         touch log${i}.txt
@@ -18,4 +17,11 @@ elif [[ "$1" == "--logs" ]]; then
       echo "Nazwa skryptu: skrypt.sh" >> $filename
       echo "Data: $(date)" >> $filename
     done
+elif [[ $1 == "--help" ]]; then
+    echo "Mozliwe opcje:"
+    echo "--date #wyswietla aktualna date"
+    echo "--logs <liczba>  (bez podania liczby tworzy 100)"
+    echo "--help #wysweitla pomoc"
+else
+    echo "Uzyj --help"
 fi
