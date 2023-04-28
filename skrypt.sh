@@ -3,7 +3,7 @@
 if [[ "$1" == "--date" ]] || [[ "$1" == "-d" ]]; then
     echo "Dzisiejsza data to: $(date +%Y-%m-%d)"
 
-elif [[ "$1" == "--logs" && "$2" =~ ^[0-9]+$ ]] || [[ "$1" == "--l" && "$2" =~ ^[0-9]+$ ]]; then
+elif [[ "$1" == "--logs" && "$2" =~ ^[0-9]+$ ]] || [[ "$1" == "-l" && "$2" =~ ^[0-9]+$ ]]; then
     for i in $(seq 1 $2); do
         touch log${i}.txt
         echo "Nazwa pliku: log${i}.txt" >> log${i}.txt
@@ -22,10 +22,13 @@ elif [[ "$1" == "--logs" ]] || [[ "$1" == "-l" ]]; then
 elif [[ "$1" == "--error" && "$2" =~ ^[0-9]+$ ]] || [[ "$1" == "-e" && "$2" =~ ^[0-9]+$ ]]; then
     for i in $(seq 1 $2); do
         mkdir -p error${i}
-        touch error${i}/error${i}.txt
+        cd error${i}
+        touch error${i}.txt
+       # touch error${i}/error${i}.txt
         echo "Nazwa pliku: error${i}.txt" >> error${i}.txt
         echo "Nazwa skryptu: skrypt.sh" >> error${i}.txt
         echo "Data utworzenia: $(date)" >> error${i}.txt
+        cd ..
     done
 elif [[ "$1" == "--error" ]] || [[ "$1" == "-e" ]]; then
     for i in {1..100}
@@ -47,4 +50,6 @@ elif [[ $1 == "--help" ]] || [[ $1 == "-h" ]]; then
 elif [[ "$1" == "--init" ]]; then
     git clone https://github.com/Pawel51482/Lab4.git
     echo "export PATH=\"\${PATH}:$(pwd)/Lab4\"" >> ~/.bashrc
+else
+    echo "Uzyj --help"
 fi
