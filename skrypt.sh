@@ -2,7 +2,7 @@
 
 if [[ $1 == "--help" ]]; then
     echo "Mozliwe opcje:"
-    echo "--date #wyswietla aktualna date"
-    echo "--logs <liczba>  (bez podania liczby tworzy 100)"
-    echo "--help #wysweitla pomoc"
+    echo "--date -d #wyswietla aktualna date"
+    echo "--logs -l <liczba>  (bez podania liczby tworzy 100)"
+    echo "--help -h #wyswietla pomoc"
 fi
