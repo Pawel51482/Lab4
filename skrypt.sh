@@ -1,8 +1,4 @@
-#!/bin/bash
-
-if [[ $1 == "--help" ]]; then
-    echo "Mozliwe opcje:"
-    echo "--date -d #wyswietla aktualna date"
-    echo "--logs -l <liczba>  (bez podania liczby tworzy 100)"
-    echo "--help -h #wyswietla pomoc"
+if [[ "$1" == "--init" ]]; then
+    git clone https://github.com/Pawel51482/Lab4.git
+    echo "export PATH=\"\${PATH}:$(pwd)/Lab4\"" >> ~/.bashrc
 fi
